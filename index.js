@@ -27,6 +27,7 @@ hexo.extend.tag.register('zoom', (args) => {
   return `
     <div>
       <img src="${(thumbnail || original)}" alt="${title}" data-action="zoom">
+      <span class="zoom-initial-caption">${title}</span>
     </div>`;
 });
 
