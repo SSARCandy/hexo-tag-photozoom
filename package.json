@@ -1,7 +1,7 @@
 {
   "name": "hexo-tag-photozoom",
   "version": "1.0.0",
-  "description": "",
+  "description": "A hexo tag plugin for image zooming, with a zooming effect similar to Medium.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/SSARCandy/hexo-tag-photozoom#readme",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "hexo-util": "^1.8.1"
+    "cheerio": "^1.0.0-rc.3"
   }
 }
