@@ -37,10 +37,10 @@ function inject_assets(hexo) {
     return Promise.all(map).then(res =>
       res.map(obj => {
         route.set(obj.path, obj.html);
-      })
+      }),
     );  
-  }
-};
+  };
+}
 
 module.exports = {
   inject_assets,
