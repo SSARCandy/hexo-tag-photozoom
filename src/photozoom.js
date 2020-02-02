@@ -20,7 +20,7 @@ function photozoom(args) {
   return `
     <div>
       <img src="${(thumbnail || original)}" alt="${title}" data-action="zoom" class="photozoom">
-      <span class="zoom-initial-caption">${title}</span>
+      ${ title ? `<span class="zoom-initial-caption">${title}</span>`: '' }
     </div>`;
 }
 
