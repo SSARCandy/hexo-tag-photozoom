@@ -1,5 +1,13 @@
 'use strict';
 
+const DEFAULT = {
+  enable: false,
+  caption: true,
+  caption_class: 'zoom-initial-caption',
+};
+
+let conf = {};
+
 /**
  * zoom tag
  *
@@ -20,8 +28,16 @@ function photozoom(args) {
   return `
     <div>
       <img src="${(thumbnail || original)}" alt="${title}" data-action="zoom" class="photozoom">
-      ${ title ? `<span class="zoom-initial-caption">${title}</span>`: '' }
+      ${ title && conf.caption ? `<span class="${conf.caption_class}">${title}</span>`: '' }
     </div>`;
 }
 
-module.exports = photozoom;
+function register(config) {
+  conf = {
+    ...DEFAULT,
+    ...config,
+  };
+  return photozoom;
+}
+
+module.exports = register;

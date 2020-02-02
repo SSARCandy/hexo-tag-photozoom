@@ -27,7 +27,7 @@ function inject_assets(hexo) {
           if ($('.photozoom').length) {
             $('body').append(`<script type="text/javascript">${fetch_asset(ZOOMJS_PATH)}</script>`);
             $('body').append(`<style>${fetch_asset(ZOOMCSS_PATH)}</style>`);              
-            hexo.log.info(`[hexo-tag-photozoom] Injected photozoom asset to ${path}`);
+            hexo.log.info(`[hexo-tag-photozoom] Injected assets to ${path}`);
           }
           resolve({ path, html: $.html() });
         });
