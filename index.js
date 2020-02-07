@@ -9,4 +9,4 @@ if (!photozoom || !photozoom.enable) {
 }
 
 hexo.extend.tag.register('zoom', zoom(photozoom));
-hexo.extend.filter.register('after_generate', inject_assets(hexo));
+hexo.extend.filter.register('after_generate', inject_assets(hexo), photozoom.priority || 10);

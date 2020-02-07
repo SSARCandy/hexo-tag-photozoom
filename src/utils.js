@@ -23,7 +23,7 @@ function inject_assets(hexo) {
         let htmlTxt = '';
         html.on('data', chunk => (htmlTxt += chunk));
         html.on('end', () => {
-          const $ = cheerio.load(htmlTxt, { decodeEntities: false });
+          const $ = cheerio.load(htmlTxt, { decodeEntities: true });
           if ($('.photozoom').length) {
             $('body').append(`<script type="text/javascript">${fetch_asset(ZOOMJS_PATH)}</script>`);
             $('body').append(`<style>${fetch_asset(ZOOMCSS_PATH)}</style>`);              
