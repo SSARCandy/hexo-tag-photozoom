@@ -25,9 +25,11 @@ _This plugin use zoom.js created by [@fat](https://github.com/fat/zoom.js) and [
 
 photozoom:
     enable: true
-    # show caption at the bottom of photo, default is "true"
+    # Lower priority means that it will be executed first.
+    priority: 10
+    # Show caption at the bottom of photo, default is "true"
     caption: true
-    # class name of caption, default is "zoom-initial-caption"
+    # Class name of caption, default is "zoom-initial-caption"
     caption_class: 'my-caption' 
 ```
 

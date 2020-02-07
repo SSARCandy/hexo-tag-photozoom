@@ -1,6 +1,6 @@
 {
   "name": "hexo-tag-photozoom",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A hexo tag plugin for image zooming, with a zooming effect similar to Medium.",
   "main": "index.js",
   "scripts": {
