@@ -9,26 +9,46 @@ const DEFAULT = {
 let conf = {};
 
 /**
+ * Whether a token looks like an image reference (URL or path) rather than the
+ * start of the title. Used to decide whether the optional thumbnail is present.
+ */
+function is_image_ref(token) {
+  return (
+    /^(https?:\/\/|\/\/|\.{0,2}\/)/.test(token) ||
+    /\.(jpe?g|png|gif|webp|svg|bmp|avif|ico|tiff?)(\?.*)?$/i.test(token)
+  );
+}
+
+function escape_html(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+/**
  * zoom tag
  *
  * Syntax:
  *   {% zoom /path/to/image [/path/to/thumbnail] [title] %}
  */
 function photozoom(args) {
-  const rUrl = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%/.\w-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[.!/\\w]*))?)/;
   const original = args.shift();
 
   let thumbnail = '';
-  if (args.length && rUrl.test(args[0])) {
+  if (args.length && is_image_ref(args[0])) {
     thumbnail = args.shift();
   }
 
   const title = args.join(' ');
+  const src = escape_html(thumbnail || original);
 
   return `
     <div>
-      <img src="${(thumbnail || original)}" alt="${title}" data-action="zoom" class="photozoom">
-      ${ title && conf.caption ? `<span class="${conf.caption_class}">${title}</span>`: '' }
+      <img src="${src}" alt="${escape_html(title)}" data-action="zoom" class="photozoom">
+      ${ title && conf.caption ? `<span class="${conf.caption_class}">${escape_html(title)}</span>`: '' }
     </div>`;
 }
 
