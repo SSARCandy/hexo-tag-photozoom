@@ -1,6 +1,7 @@
 # Hexo Photo Zoom 
 
 ![](https://img.shields.io/npm/v/hexo-tag-photozoom)
+![](https://img.shields.io/npm/dt/hexo-tag-photozoom)
 ![](https://img.shields.io/github/license/SSARCandy/hexo-tag-photozoom)
 
 <p style="text-align: center; font-weight:700;">
