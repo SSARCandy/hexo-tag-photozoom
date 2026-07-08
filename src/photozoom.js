@@ -45,10 +45,15 @@ function photozoom(args) {
   const title = args.join(' ');
   const src = escape_html(thumbnail || original);
 
+  // `src` and `alt` are escaped because they live in attribute context, where an
+  // unescaped quote/angle-bracket could break out of the attribute. The caption,
+  // however, is element text content authored by the site owner in the tag, so we
+  // emit it raw — that lets captions contain intentional markup (e.g. footnote
+  // markers like `<sup>[1]</sup>`, links), matching the pre-1.0.3 behavior.
   return `
     <div>
       <img src="${src}" alt="${escape_html(title)}" data-action="zoom" class="photozoom">
-      ${ title && conf.caption ? `<span class="${conf.caption_class}">${escape_html(title)}</span>`: '' }
+      ${ title && conf.caption ? `<span class="${conf.caption_class}">${title}</span>`: '' }
     </div>`;
 }
 
